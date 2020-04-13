@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{% static 'lib/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/css/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/css/style.css' %}">
+</head>
+<body>
+    
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'lib/js/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'lib/js/popper.min.js ' %}"></script>
+    <script src="{% static 'lib/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/js/slick.min.js' %}"></script>
+    <script src="{% static 'lib/js/all.min.js' %}"></script>
+    <script src="{% static 'lib/js/script.js' %}"></script>
+
+</body>
+</html>

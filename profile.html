@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<section class="pb-5">
+    <nav class="navbar navbar-expand-lg  custom_nav">
+  <div class="container">
+  <a class="navbar-brand" href="#">MyTutor</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="mynav">
+  <ul class="navbar-nav ml-auto">
+  <li class="nav-item active">
+   <a class="nav-link" href="{% url 'user-page' %}">Home</a>
+  </li>
+  <li class="nav-item">
+   <a class="nav-link" href="{% url 'tutor-about' %}">About</a>
+  </li>
+  <li class="nav-item">
+        <a class="nav-link" href="{% url 'blog-page' %}">Blog</a>
+       </li>
+    
+ 
+  </ul>
+  </div>
+  </div>
+  </nav>
+  </section> 
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2>Create your profile here as a tutor</h2>
+                <div class="all_btn p_btn">
+                    <a href="#" id="button">Create</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center py-5 pt-5">
+            <div class="col-lg-6">
+               
+                    <div class="profile-form">
+                        <div class="close">+</div>
+                        
+                          <form name="myForm" method="post" action="">
+                                {% csrf_token %}
+                              <div class="row">
+                                    <div class="col-lg-6">
+                                            <div class="form-group profile">
+                                                    <label class="lbl" for="exampleInputEmail1">Name</label>
+                                                    {{ form.name }}
+                                                </div> 
+                                        </div>
+                                  <div class="col-lg-6">
+                                       
+                              <div class="form-group profile">
+                                    <label class="lbl" for="exampleInputEmail1">Address</label>
+                                    {{ form.address }}
+
+                                </div>  
+                                  </div>
+                                  <div class="col-lg-6">
+                                        <div class="form-group profile">
+                                                <label class="lbl" for="exampleInputEmail1">Institution</label>
+                                                {{ form.institution }}
+
+                                            </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                            <div class="form-group profile">
+                                                    <label class="lbl" for="exampleInputEmail1">Subject</label>
+                                                    {{ form.subject }}
+
+                                                </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                                <div class="form-group profile">
+                                                        <label class="lbl" for="exampleInputEmail1">Salary</label>
+                                                        {{ form.salary }}
+
+                                                    </div>
+                                            </div>
+                                            
+                                                <div class="col-lg-6">
+                                               
+                            <div class="form-group profile">
+                                    <label class="lbl" for="exampleInputEmail1">Phone</label>
+                                    {{ form.phone }}
+
+                                </div>
+                                        
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                            <div class="form-group profile">
+                                                                    <label class="lbl" for="exampleInputEmail1">Choose Image</label>
+                                                                    {{ form.image }}
+            
+                                                                </div>
+                                                        </div>
+
+
+                              </div>
+                             
+                              <div class="col-lg-12 ">
+                                <button class="btn btn-block btn1 btn2 mt-2" type="submit">Create</button>
+
+                        </div>
+                    
+                               </form>
+                      </div>
+               
+            </div>
+        </div>
+
+        <div class="row ">
+            {% for profile in profiles %}
+
+
+            <div class="col-md-3 py-2">
+                <div class="profile_main">
+                    <!-- <div class="image text-center">
+                        <img src="{{ profile.image }}" alt="Images">
+                    </div> -->
+                    <div class="profile_info">
+                            <p>Name : <span>{{profile.name}}</span></p>
+                            <p>Address : <span>{{profile.address}}</span></p>
+                            <p>Institution : <span>{{profile.institution}}</span></p>
+                            <p>Subject : <span>{{profile.subject}}</span></p>
+                            <p>Salary : <span>{{profile.salary}}</span></p>
+                            <p>Phone : <span>{{profile.phone}}</span></p>
+                        </div>
+                </div>
+               
+            </div>
+
+
+            {% endfor %}
+        </div>
+
+
+    </div>
+</section>
+
+<script type="text/javascript">
+    document.getElementById('button').addEventListener('click',function(){
+        document.querySelector('.profile-form').style.display="block";
+    });
+    document.querySelector('.close').addEventListener('click',function(){
+        document.querySelector('.profile-form').style.display = "none";
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>This our list page</h2>
+
+
+<table class="table table-borderless">
+    <thead class="font-weight-bold">
+
+        <tr>
+            <td>Full Name</td>
+            <td>Addess</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Gender</td>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        {% for portfolio in portfolio_list %}
+        <tr>
+            <td>{{portfolio.fullname}}</td>
+            <td>{{portfolio.address}}</td>
+            <td>{{portfolio.phone}}</td>
+            <td>{{portfolio.email}}</td>
+            <td>{{portfolio.gender}}</td>
+            <td><a href="{% url 'portfolio_update' portfolio.id %}" class="btn text-secondary px-0"><i class="far fa-edit"></i></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock %}
